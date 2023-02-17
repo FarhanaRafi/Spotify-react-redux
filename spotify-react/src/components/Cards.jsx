@@ -12,14 +12,14 @@ const Cards = ({ card }) => {
         <div className="good-morning-singer">{card.artist.name}</div>
       </div> */}
       <div
-        className="card card-side bg-gray-600  shadow-xl "
+        className="card card-side bg-gray-600  shadow-xl  mb-3 "
         style={{ width: "250px", height: "70px" }}
       >
         <figure>
           <img src={card.album.cover_small} alt="Movie" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{card.artist.name}</h2>
+          <h4 className="card-title name">{card.artist.name}</h4>
         </div>
       </div>
     </div>

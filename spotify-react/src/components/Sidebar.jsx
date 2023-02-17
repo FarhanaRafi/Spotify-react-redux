@@ -17,6 +17,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { Form } from "react-bootstrap";
 import GoodMorning from "./GoodMorning";
+import RecentlyPlayed from "./RecentlyPlayed";
 
 const navigation = [
   { name: "Home", href: "#", icon: HomeIcon, current: true },
@@ -270,15 +271,16 @@ const Sidebar = () => {
             </div>
           </div>
         </div>
-        <main className="flex-1 bg-gray-700">
+        <main className=" bg-gray-700">
           <div className="py-6">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 ">
               <h1 className="text-2xl font-semibold text-white">
                 Good Morning
               </h1>
             </div>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-              <GoodMorning data={"silence"} />
+              <GoodMorning />
+              <RecentlyPlayed />
               {/* <div className="py-4">
                 <div className="h-96 rounded-lg border-4 border-dashed border-gray-700" />
               </div>

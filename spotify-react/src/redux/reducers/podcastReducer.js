@@ -1,25 +1,21 @@
-import { GET_ALBUMS, GET_ERROR, GET_FAVORITES, GET_LOADING } from "../actions";
+import { GET_ERROR, GET_FAVORITES, GET_LOADING, GET_PODCAST } from "../actions";
 
 const initialState = {
-  song: [],
+  favorites: [],
+  podcasts: [],
   isLoading: true,
   isError: false,
 };
 
-const albumReducer = (state = initialState, action) => {
+const podcastReducer = (state = initialState, action) => {
   console.log(action, "asdfghj");
   switch (action.type) {
-    case GET_ALBUMS:
+    case GET_PODCAST:
       return {
         ...state,
-        song: action.payload.data.slice(0, 5),
+        podcasts: action.payload.data.slice(0, 5),
       };
 
-    case GET_FAVORITES:
-      return {
-        ...state,
-        favorites: action.payload.data.slice(0, 5),
-      };
     case GET_LOADING:
       return {
         ...state,
@@ -36,4 +32,4 @@ const albumReducer = (state = initialState, action) => {
   }
 };
 
-export default albumReducer;
+export default podcastReducer;

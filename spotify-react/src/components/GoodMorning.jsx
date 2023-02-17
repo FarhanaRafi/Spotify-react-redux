@@ -20,18 +20,15 @@ const GoodMorning = () => {
 
   return (
     <>
-      {console.log("album", albumFromRedux)}
-
       {error && <Alert variant="danger">Something went wrong</Alert>}
       {loadingSpinner && (
         <Spinner animation="border" variant="success" className="spinners" />
       )}
-      <Row>
+      <Row className="md:flex gap-3 flex-wrap">
         {albumFromRedux.map((card) => {
-          console.log(card, "gggggg");
           return (
-            <Col xs={4}>
-              <Cards card={card} key={card.id} />
+            <Col xs={6} key={card.id}>
+              <Cards card={card} />
             </Col>
           );
         })}
