@@ -3,31 +3,18 @@ import { Dialog, Menu, Transition } from "@headlessui/react";
 import {
   Bars3BottomLeftIcon,
   BellIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
   HeartIcon,
   HomeIcon,
   MusicalNoteIcon,
   PlusCircleIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import {
-  ChevronDownIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/20/solid";
+import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Form } from "react-bootstrap";
 import GoodMorning from "./GoodMorning";
 import RecentlyPlayed from "./RecentlyPlayed";
 import Favorite from "./Favorite";
-import Footer from "./Footer";
 
-const navigation = [
-  { name: "Home", href: "#", icon: HomeIcon, current: true },
-  { name: "Search", href: "#", icon: MagnifyingGlassIcon, current: false },
-  { name: "Your Library", href: "#", icon: MusicalNoteIcon, current: false },
-  { name: "Create Playlist", href: "#", icon: PlusCircleIcon, current: false },
-  { name: "Liked Songs", href: "#", icon: HeartIcon, current: false },
-];
 const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
@@ -40,6 +27,7 @@ function classNames(...classes) {
 
 const Sidebar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
   return (
     <div>
       <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -103,29 +91,23 @@ const Sidebar = () => {
                 </div>
                 <div className="mt-5 h-0 flex-1 overflow-y-auto">
                   <nav className="space-y-1 px-2">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
+                    <a
+                      key="key"
+                      href="#href"
+                      className={classNames(
+                        "text-gray-300 hover:bg-gray-700 hover:text-white",
+                        "group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                      )}
+                    >
+                      <HomeIcon
                         className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                          "text-gray-400 group-hover:text-gray-300",
+                          "mr-4 flex-shrink-0 h-6 w-6"
                         )}
-                      >
-                        <item.icon
-                          className={classNames(
-                            item.current
-                              ? "text-gray-300"
-                              : "text-gray-400 group-hover:text-gray-300",
-                            "mr-4 flex-shrink-0 h-6 w-6"
-                          )}
-                          aria-hidden="true"
-                        />
-                        {item.name}
-                      </a>
-                    ))}
+                        aria-hidden="true"
+                      />
+                      Home
+                    </a>
                   </nav>
                 </div>
               </Dialog.Panel>
@@ -150,29 +132,94 @@ const Sidebar = () => {
           </div>
           <div className="flex flex-1 flex-col overflow-y-auto">
             <nav className="flex-1 space-y-1 px-2 py-4">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
+              <a
+                key="key"
+                href="#href"
+                className={classNames(
+                  "text-gray-300 hover:bg-gray-700 hover:text-white",
+                  "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                )}
+              >
+                <HomeIcon
                   className={classNames(
-                    item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                    "text-gray-400 group-hover:text-gray-300",
+                    "mr-3 flex-shrink-0 h-6 w-6"
                   )}
-                >
-                  <item.icon
-                    className={classNames(
-                      item.current
-                        ? "text-gray-300"
-                        : "text-gray-400 group-hover:text-gray-300",
-                      "mr-3 flex-shrink-0 h-6 w-6"
-                    )}
-                    aria-hidden="true"
-                  />
-                  {item.name}
-                </a>
-              ))}
+                  aria-hidden="true"
+                />
+                Home
+              </a>
+              <a
+                key="key"
+                href="#href"
+                className={classNames(
+                  "text-gray-300 hover:bg-gray-700 hover:text-white",
+                  "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                )}
+                onClick={() => {
+                  setSearchActive(!searchActive);
+                }}
+              >
+                <MagnifyingGlassIcon
+                  className={classNames(
+                    "text-gray-400 group-hover:text-gray-300",
+                    "mr-3 flex-shrink-0 h-6 w-6"
+                  )}
+                  aria-hidden="true"
+                />
+                Search
+              </a>
+              <a
+                key="key"
+                href="#href"
+                className={classNames(
+                  "text-gray-300 hover:bg-gray-700 hover:text-white",
+                  "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                )}
+              >
+                <MusicalNoteIcon
+                  className={classNames(
+                    "text-gray-400 group-hover:text-gray-300",
+                    "mr-3 flex-shrink-0 h-6 w-6"
+                  )}
+                  aria-hidden="true"
+                />
+                Your Library
+              </a>
+              <a
+                key="key"
+                href="#href"
+                className={classNames(
+                  "text-gray-300 hover:bg-gray-700 hover:text-white",
+                  "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                )}
+              >
+                <PlusCircleIcon
+                  className={classNames(
+                    "text-gray-400 group-hover:text-gray-300",
+                    "mr-3 flex-shrink-0 h-6 w-6"
+                  )}
+                  aria-hidden="true"
+                />
+                Create Playlist
+              </a>
+              <a
+                key="key"
+                href="#href"
+                className={classNames(
+                  "text-gray-300 hover:bg-gray-700 hover:text-white",
+                  "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                )}
+              >
+                <HeartIcon
+                  className={classNames(
+                    "text-gray-400 group-hover:text-gray-300",
+                    "mr-3 flex-shrink-0 h-6 w-6"
+                  )}
+                  aria-hidden="true"
+                />
+                Liked Songs
+              </a>
             </nav>
           </div>
         </div>
@@ -189,16 +236,19 @@ const Sidebar = () => {
           </button>
           <div className="flex flex-1 justify-between px-4">
             <div className="flex flex-1">
-              <Form className="mt-5 px-5 ">
-                <Form.Group>
-                  <Form.Control
-                    className="pl-4 "
-                    type="text"
-                    placeholder="Search"
-                  />
-                </Form.Group>
-              </Form>
-
+              {searchActive ? (
+                <Form className="mt-5 px-5">
+                  <Form.Group>
+                    <Form.Control
+                      className="pl-4 "
+                      type="text"
+                      placeholder="Search"
+                    />
+                  </Form.Group>
+                </Form>
+              ) : (
+                ""
+              )}
               {/* <form className="flex w-full md:ml-0" action="#" method="GET">
                 <label htmlFor="search-field" className="sr-only">
                   Search
