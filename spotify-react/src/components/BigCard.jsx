@@ -7,7 +7,7 @@ const BigCard = ({ card }) => {
       <Card.Img variant="top" src={card.album.cover_medium} />
       <Card.Body className="background">
         <Card.Title className="title">{card.album.title}</Card.Title>
-        <Card.Text>
+        <Card.Text className="artist-name">
           <small>{card.artist.name}</small>
         </Card.Text>
       </Card.Body>

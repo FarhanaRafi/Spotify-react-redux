@@ -19,7 +19,7 @@ const Cards = ({ card }) => {
           <img src={card.album.cover_small} alt="Movie" />
         </figure>
         <div className="card-body">
-          <h4 className="card-title name">{card.artist.name}</h4>
+          <p className="card-title name text-white">{card.artist.name}</p>
         </div>
       </div>
     </div>

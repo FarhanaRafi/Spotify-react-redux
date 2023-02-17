@@ -1,31 +1,30 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPodcastAsync } from "../redux/actions";
+import { getFavoriteAsync } from "../redux/actions";
 import { Alert, Spinner, Row, Col } from "react-bootstrap";
 import BigCard from "./BigCard";
 
-const RecentlyPlayed = () => {
-  const podcastFromRedux = useSelector((state) => state.podcast.podcasts);
+const Favorite = () => {
+  const favoriteFromRedux = useSelector((state) => state.favorite.favorites);
   const loadingSpinner = useSelector((state) => state.album.isLoading);
   const error = useSelector((state) => state.album.isError);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPodcastAsync("podcasts"));
+    dispatch(getFavoriteAsync("rock"));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div>
-      {" "}
+    <div className="favorite">
       <>
-        <h1 className="text-white text-start mb-4">Podcasts You Might enjoy</h1>
+        <h1 className="text-white text-start mb-4">Favorites</h1>
         {error && <Alert variant="danger">Something went wrong</Alert>}
         {loadingSpinner && (
           <Spinner animation="border" variant="success" className="spinners" />
         )}
         <Row className="md:flex gap-2 flex-wrap">
-          {podcastFromRedux.map((card) => {
+          {favoriteFromRedux.map((card) => {
             console.log(card, "gggggg");
             return (
               <Col xs={3} key={card.id}>
@@ -39,4 +38,4 @@ const RecentlyPlayed = () => {
   );
 };
 
-export default RecentlyPlayed;
+export default Favorite;

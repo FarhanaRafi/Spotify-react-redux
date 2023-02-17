@@ -20,6 +20,7 @@ const GoodMorning = () => {
 
   return (
     <>
+      <h1 className="text-white text-start mb-4">Good Morning, Farhana</h1>
       {error && <Alert variant="danger">Something went wrong</Alert>}
       {loadingSpinner && (
         <Spinner animation="border" variant="success" className="spinners" />

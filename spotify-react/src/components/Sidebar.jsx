@@ -18,6 +18,8 @@ import {
 import { Form } from "react-bootstrap";
 import GoodMorning from "./GoodMorning";
 import RecentlyPlayed from "./RecentlyPlayed";
+import Favorite from "./Favorite";
+import Footer from "./Footer";
 
 const navigation = [
   { name: "Home", href: "#", icon: HomeIcon, current: true },
@@ -271,16 +273,18 @@ const Sidebar = () => {
             </div>
           </div>
         </div>
-        <main className=" bg-gray-700">
+        <main className=" bg-gray-600 ">
           <div className="py-6">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 ">
-              <h1 className="text-2xl font-semibold text-white">
+              {/* <h1 className="text-2xl font-semibold text-white">
                 Good Morning
-              </h1>
+              </h1> */}
             </div>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
               <GoodMorning />
               <RecentlyPlayed />
+              <Favorite />
+
               {/* <div className="py-4">
                 <div className="h-96 rounded-lg border-4 border-dashed border-gray-700" />
               </div>
