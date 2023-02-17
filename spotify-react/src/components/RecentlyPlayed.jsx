@@ -19,7 +19,9 @@ const RecentlyPlayed = () => {
     <div>
       {" "}
       <>
-        <h1 className="text-white text-start mb-4">Podcasts You Might enjoy</h1>
+        <h1 className="text-white text-start mb-4 mt-4">
+          Podcasts You Might enjoy
+        </h1>
         {error && <Alert variant="danger">Something went wrong</Alert>}
         {loadingSpinner && (
           <Spinner animation="border" variant="success" className="spinners" />

@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { getSelectedSongAsync } from "../redux/actions";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const BigCard = ({ card }) => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const BigCard = ({ card }) => {
     >
       <Card.Img variant="top" src={card.album.cover_medium} />
       <Card.Body className="background">
+        <AiOutlineHeart />
         <Card.Title className="title">{card.album.title}</Card.Title>
         <Card.Text className="artist-name">
           <small>{card.artist.name}</small>
