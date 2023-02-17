@@ -282,3 +282,23 @@ i:hover {
 .playlist i {
   font-size: 14px;
 }
+
+
+.good-morning-content {
+  background-color: rgb(199, 133, 133);
+  width: 20%;
+}
+
+.good-morning-content:hover {
+  background-color: rgb(65, 64, 64);
+}
+
+.good-morning-singer {
+  margin-left: 5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.small-container:hover {
+  background-color: #2d5;
+}

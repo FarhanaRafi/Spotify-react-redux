@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addToFavoritesAction, getSelectedSongAsync } from "../redux/actions";
+import {
+  addToFavoritesAction,
+  removeFromFavoritesAction,
+  getSelectedSongAsync,
+} from "../redux/actions";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useState } from "react";
 
@@ -10,44 +14,35 @@ const BigCard = ({ card }) => {
   const [active, setActive] = useState(false);
   const getFavRedux = useSelector((state) => state.likes.likedSongs);
 
-  const isfav = (id) => {
-    if (getFavRedux.includes(id)) {
-      return true;
+  useEffect(() => {
+    let likedIds = getFavRedux.map((value) => value.id);
+    if (likedIds.includes(card.id)) {
+      setActive(true);
     } else {
-      return false;
+      setActive(false);
     }
-  };
+  }, []);
 
-  const buttonClick = () => {
-    setActive(!active);
-  };
   return (
     <Card
-      style={{ height: "200px", width: "200px" }}
       onClick={(e) => {
         dispatch(getSelectedSongAsync(card));
-        console.log(card, "selected");
       }}
     >
       <Card.Img variant="top" src={card.album.cover_medium} />
       <Card.Body className="background">
-        {isfav ? (
-          <AiOutlineHeart
-            color={active ? "red" : "black"}
-            onClick={() => {
+        <AiOutlineHeart
+          color={active ? "red" : "black"}
+          onClick={() => {
+            if (!active) {
               setActive(true);
               dispatch(addToFavoritesAction(card));
-            }}
-          />
-        ) : (
-          <AiOutlineHeart
-            color={active ? "red" : "black"}
-            onClick={() => {
-              buttonClick();
-              dispatch(addToFavoritesAction(card));
-            }}
-          />
-        )}
+            } else {
+              setActive(false);
+              dispatch(removeFromFavoritesAction(card));
+            }
+          }}
+        />
 
         <Card.Title className="title">{card.album.title}</Card.Title>
         <Card.Text className="artist-name">
@@ -55,25 +50,6 @@ const BigCard = ({ card }) => {
         </Card.Text>
       </Card.Body>
     </Card>
-    // <div>
-    //   <div className="col mb-4">
-    //     <div className="card h-100" id="{card.album.id}">
-    //       <div className="play-btn-container">
-    //         <img
-    //           src={card.album.cover_medium}
-    //           className="card-img-top"
-    //           alt="..."
-    //         />
-    //       </div>
-    //       <div className="card-body">
-    //         <h5 className="card-title">{card.album.title}</h5>
-    //         <p className="card-text text-muted mt-n2">
-    //           <small>{card.artist.name}</small>
-    //         </p>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 
