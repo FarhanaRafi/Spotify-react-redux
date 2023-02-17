@@ -5,6 +5,7 @@ export const GET_FAVORITES = "GET_FAVORITES";
 export const GET_PODCAST = "GET_PODCAST";
 export const GET_SEARCH = "GET_SEARCH";
 export const SET_SONG = "SET_SONG";
+export const SET_LIKED = "SET_LIKED";
 
 export const getAlbumsAsync = (query) => {
   return async (dispatch, getState) => {
@@ -169,5 +170,12 @@ export const getSelectedSongAsync = (song) => {
   return {
     type: SET_SONG,
     payload: song,
+  };
+};
+
+export const getLikedSong = (id) => {
+  return {
+    type: SET_LIKED,
+    payload: id,
   };
 };
