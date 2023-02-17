@@ -18,7 +18,7 @@ const Favorite = () => {
   return (
     <div className="favorite">
       <>
-        <h3 className="text-white text-start mb-4">Favorites</h3>
+        <h3 className="text-white text-start mb-4 ml-4">Favorites</h3>
         {error && <Alert variant="danger">Something went wrong</Alert>}
         {loadingSpinner && (
           <Spinner animation="border" variant="success" className="spinners" />

@@ -28,9 +28,10 @@ const BigCard = ({ card }) => {
       onClick={(e) => {
         dispatch(getSelectedSongAsync(card));
       }}
+      className="ml-4 cardHover"
     >
       <Card.Img variant="top" src={card.album.cover_medium} />
-      <Card.Body className="background">
+      <Card.Body className="background cardHover">
         <AiOutlineHeart
           color={active ? "red" : "black"}
           onClick={() => {

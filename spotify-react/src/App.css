@@ -303,3 +303,12 @@ i:hover {
 .small-container:hover {
   background-color: #2d5;
 }
+
+.goodmorning {
+  flex-grow: 1;
+  background: rgb(228, 62, 62);
+  background: linear-gradient(180deg, rgb(2, 101, 49) 0%, rgba(19, 19, 18, 0.2) 98%);
+}
+.cardHover:hover{
+  background-color: rgb(2, 101, 49);
+}

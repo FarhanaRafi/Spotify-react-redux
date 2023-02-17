@@ -2,7 +2,7 @@ import React from "react";
 
 const SmallCard = ({ card }) => {
   return (
-    <div className="bg-secondary small-container mt-2">
+    <div className="bg-secondary small-container mt-2 ml-4">
       <div className="good-morning-content d-flex align-items-center">
         <img
           className=" good-morning-img "

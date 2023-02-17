@@ -19,7 +19,7 @@ const RecentlyPlayed = () => {
     <div>
       {" "}
       <>
-        <h3 className="text-white text-start mb-4 mt-5">
+        <h3 className="text-white text-start mb-4 mt-5 ml-4">
           Podcasts You Might enjoy
         </h3>
         {error && <Alert variant="danger">Something went wrong</Alert>}

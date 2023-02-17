@@ -23,7 +23,7 @@ const LikedAlbum = () => {
           {favorite.map((card, i) => {
             return (
               <Col xs={6} md={2} key={card.id}>
-                <Card>
+                <Card className="ml-4">
                   <Card.Img variant="top" src={card.album.cover_medium} />
                   <Card.Body className="background">
                     <Button
