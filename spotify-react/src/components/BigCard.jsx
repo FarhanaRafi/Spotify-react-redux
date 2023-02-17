@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getSelectedSongAsync } from "../redux/actions";
+import { addToFavoritesAction, getSelectedSongAsync } from "../redux/actions";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useState } from "react";
 
@@ -16,6 +16,10 @@ const BigCard = ({ card }) => {
     } else {
       return false;
     }
+  };
+
+  const buttonClick = () => {
+    setActive(!active);
   };
   return (
     <Card
@@ -32,15 +36,15 @@ const BigCard = ({ card }) => {
             color={active ? "red" : "black"}
             onClick={() => {
               setActive(true);
-              dispatch(card.id);
+              dispatch(addToFavoritesAction(card));
             }}
           />
         ) : (
           <AiOutlineHeart
             color={active ? "red" : "black"}
             onClick={() => {
-              setActive(false);
-              dispatch(card.id);
+              buttonClick();
+              dispatch(addToFavoritesAction(card));
             }}
           />
         )}

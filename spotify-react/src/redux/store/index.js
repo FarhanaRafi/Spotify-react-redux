@@ -5,6 +5,14 @@ import likedSongReducer from "../reducers/likedSongReducer";
 import podcastReducer from "../reducers/podcastReducer";
 import searchReducer from "../reducers/searchReducer";
 import selectSongReducer from "../reducers/selectSongReducer";
+import { persistStore, persistReducer } from "redux-persist";
+import localStorage from "redux-persist/lib/storage";
+import favoriteAlbumReducer from "../reducers/favoriteAlbumReducer";
+
+const persistConfig = {
+  storage: localStorage,
+  key: "root",
+};
 
 const combinedReducer = combineReducers({
   album: albumReducer,
@@ -13,10 +21,16 @@ const combinedReducer = combineReducers({
   result: searchReducer,
   selected: selectSongReducer,
   likes: likedSongReducer,
+  favoriteAlbum: favoriteAlbumReducer,
 });
+
+const persistedReducer = persistReducer(persistConfig, combinedReducer);
 
 const store = configureStore({
-  reducer: combinedReducer,
+  //   reducer: combinedReducer,
+  reducer: persistedReducer,
 });
 
-export default store;
+const persistedStore = persistStore(store);
+
+export { store, persistedStore };

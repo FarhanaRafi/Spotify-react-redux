@@ -16,6 +16,7 @@ import RecentlyPlayed from "./RecentlyPlayed";
 import Favorite from "./Favorite";
 import SearchResult from "./SearchResult";
 import { getSearchAsync } from "../redux/actions";
+import { Link, useNavigate } from "react-router-dom";
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -32,6 +33,7 @@ const Sidebar = () => {
   const [searchActive, setSearchActive] = useState(false);
   const [visible, setVisible] = useState(true);
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -127,8 +129,8 @@ const Sidebar = () => {
       {/* Static sidebar for desktop */}
       <div className="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
         {/* Sidebar component, swap this element with another sidebar if you like */}
-        <div className="flex min-h-0 flex-1 flex-col bg-gray-800">
-          <div className="flex h-16 flex-shrink-0 items-center bg-gray-800 pl-9">
+        <div className="flex min-h-0 flex-1 flex-col bg-black">
+          <div className="flex h-16 flex-shrink-0 items-center bg-black pl-9">
             <img
               className="h-10 w-auto"
               src="https://icons.iconarchive.com/icons/blackvariant/button-ui-requests-2/512/Spotify-icon.png"
@@ -221,6 +223,7 @@ const Sidebar = () => {
                     "text-gray-400 group-hover:text-gray-300",
                     "mr-3 flex-shrink-0 h-6 w-6"
                   )}
+                  onClick={() => navigate("/favorite")}
                   aria-hidden="true"
                 />
                 Liked Songs
@@ -230,7 +233,7 @@ const Sidebar = () => {
         </div>
       </div>
       <div className="flex flex-col md:pl-64">
-        <div className="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-gray-800 shadow">
+        <div className="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-black shadow">
           <button
             type="button"
             className="border-r  border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
@@ -339,7 +342,7 @@ const Sidebar = () => {
             </div>
           </div>
         </div>
-        <main className=" bg-gray-600 ">
+        <main className=" bg-black ">
           <div className="py-6">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 ">
               {/* <h1 className="text-2xl font-semibold text-white">
