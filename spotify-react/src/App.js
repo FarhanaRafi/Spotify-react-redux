@@ -16,11 +16,8 @@ function App() {
         <SideMenu />
         <Header />
 
-        <Contents />
-
         <Routes>
-          {/* <Route path="/" element={<Sidebar />} /> */}
-
+          <Route path="/" element={<Contents />} />
           <Route path="/favorite" element={<LikedAlbum />} />
         </Routes>
         <Footer />

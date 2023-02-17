@@ -6,13 +6,19 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
-import { black } from "tailwindcss/colors";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { setSearchActiveAction, showSearchAction } from "../redux/actions";
+import { Link, useNavigate } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const SideMenu = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const searchActiveRedux = useSelector((state) => state.searchActive.active);
   return (
     <div
       className="flex flex-col overflow-y-auto pt-2 pb-4"
@@ -41,6 +47,9 @@ const SideMenu = () => {
                 "text-gray-300 hover:bg-gray-700 hover:text-white",
                 "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
               )}
+              onClick={() => {
+                dispatch(setSearchActiveAction(false));
+              }}
             >
               <HomeIcon
                 className={classNames(
@@ -60,6 +69,10 @@ const SideMenu = () => {
               )}
               onClick={() => {
                 // setSearchActive(!searchActive);
+                if (searchActiveRedux) {
+                  dispatch(showSearchAction(false));
+                }
+                dispatch(setSearchActiveAction(!searchActiveRedux));
               }}
             >
               <MagnifyingGlassIcon
@@ -112,13 +125,13 @@ const SideMenu = () => {
                 "text-gray-300 hover:bg-gray-700 hover:text-white",
                 "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
               )}
+              onClick={() => navigate("/favorite")}
             >
               <HeartIcon
                 className={classNames(
                   "text-gray-400 group-hover:text-gray-300",
                   "mr-3 flex-shrink-0 h-6 w-6"
                 )}
-                // onClick={() => navigate("/favorite")}
                 aria-hidden="true"
               />
               Liked Songs

@@ -2,8 +2,11 @@ import React from "react";
 import GoodMorning from "./GoodMorning";
 import RecentlyPlayed from "./RecentlyPlayed";
 import Favorite from "./Favorite";
+import { useSelector } from "react-redux";
+import SearchResult from "./SearchResult";
 
 const Contents = () => {
+  const showSearchRedux = useSelector((state) => state.showSearch.result);
   return (
     <div
       style={{
@@ -11,9 +14,15 @@ const Contents = () => {
         marginLeft: "15%",
       }}
     >
-      <GoodMorning />
-      <RecentlyPlayed />
-      <Favorite />
+      {!showSearchRedux ? (
+        <>
+          <GoodMorning />
+          <RecentlyPlayed />
+          <Favorite />
+        </>
+      ) : (
+        <SearchResult />
+      )}
     </div>
   );
 };

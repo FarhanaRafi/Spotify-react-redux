@@ -1,6 +1,9 @@
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
+import { Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { getSearchAsync, showSearchAction } from "../redux/actions";
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -13,6 +16,12 @@ function classNames(...classes) {
 }
 
 export default function Header() {
+  const [visible, setVisible] = useState(true);
+  const [query, setQuery] = useState("");
+  const searchActiveRedux = useSelector((state) => state.searchActive.active);
+  const showSearchRedux = useSelector((state) => state.showSearch.result);
+  const dispatch = useDispatch();
+
   return (
     // <header className="bg-black">
     //   <nav
@@ -72,7 +81,32 @@ export default function Header() {
       <Navbar fixed="top" expand="lg" bg="black">
         <Navbar.Brand href="#"></Navbar.Brand>
         <div className="flex w-full items-center justify-between border-black-500 p-0 lg:border-none">
-          <div className="flex items-center"></div>
+          <div className="flex items-center">
+            {searchActiveRedux ? (
+              <Form
+                style={{ paddingLeft: "250px" }}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  getSearchAsync(query);
+                  dispatch(showSearchAction(true));
+                }}
+              >
+                <Form.Group>
+                  <Form.Control
+                    className="pl-4 "
+                    type="text"
+                    placeholder="Search"
+                    value={query}
+                    onChange={(e) => {
+                      setQuery(e.target.value);
+                    }}
+                  />
+                </Form.Group>
+              </Form>
+            ) : (
+              ""
+            )}
+          </div>
           <div className="ml-10 space-x-4">
             <Menu as="div" className="relative ml-3 py-2">
               <div>
