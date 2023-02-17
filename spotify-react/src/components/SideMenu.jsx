@@ -40,26 +40,26 @@ const SideMenu = () => {
       <div className="ml-2 mt-3 flex flex-grow flex-col">
         <nav className="flex-1 space-y-8  px-2" aria-label="Sidebar">
           <div className="space-y-1">
-            <a
-              key="key"
-              href="#href"
-              className={classNames(
-                "text-gray-300 hover:bg-gray-700 hover:text-white",
-                "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
-              )}
-              onClick={() => {
-                dispatch(setSearchActiveAction(false));
-              }}
-            >
-              <HomeIcon
+            <Link to="/">
+              <p
                 className={classNames(
-                  "text-gray-400 group-hover:text-gray-300",
-                  "mr-3 flex-shrink-0 h-6 w-6"
+                  "text-gray-300 hover:bg-gray-700 hover:text-white",
+                  "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
                 )}
-                aria-hidden="true"
-              />
-              Home
-            </a>
+                onClick={() => {
+                  dispatch(setSearchActiveAction(false));
+                }}
+              >
+                <HomeIcon
+                  className={classNames(
+                    "text-gray-400 group-hover:text-gray-300",
+                    "mr-3 flex-shrink-0 h-6 w-6"
+                  )}
+                  aria-hidden="true"
+                />
+                Home
+              </p>
+            </Link>
             <a
               key="key"
               href="#href"

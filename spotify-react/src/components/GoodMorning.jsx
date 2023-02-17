@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAlbumsAsync } from "../redux/actions";
 import { Alert, Spinner, Row, Col } from "react-bootstrap";
 import SmallCard from "./SmallCard";
-// import { useDispatch } from "react-redux";
 
 const GoodMorning = () => {
   const albumFromRedux = useSelector((state) => state.album.song);

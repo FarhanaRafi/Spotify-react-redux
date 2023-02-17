@@ -1,13 +1,3 @@
-// import React from "react";
-
-// const SearchResult = () => {
-
-//   return <div>
-
-//   </div>;
-// };
-
-// export default SearchResult;
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSearchAsync } from "../redux/actions";
