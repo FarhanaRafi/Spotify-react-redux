@@ -1,29 +1,51 @@
-import React from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiSkipPrevious, BiSkipNext } from "react-icons/bi";
 import { BsPlayFill, BsFillVolumeDownFill } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 const MusicPlayer = () => {
+  let selectedFromRedux = useSelector((state) => state.selected.currentSong);
+
   return (
     <div className="col-12 music-player w-100" style={{ width: "100%" }}>
       <div className="song-bar">
-        <div className="song-infos">
-          <div className="image-container">
-            <img
-              id="album-art"
-              src="https://d2y6mqrpjbqoe6.cloudfront.net/image/upload/f_auto,q_auto/media/library-400/216_636967437355378335Your_Lie_Small_hq.jpg"
-              alt=""
-            />
+        {selectedFromRedux ? (
+          <div className="song-infos">
+            <div className="image-container">
+              <img
+                id="album-art"
+                src={selectedFromRedux.album.cover_small}
+                alt=""
+              />
+            </div>
+            <div className="song-description">
+              <p id="album-title" className="title">
+                {selectedFromRedux.album.title}
+              </p>
+              <p id="album-artist" className="artist">
+                {selectedFromRedux.artist.name}
+              </p>
+            </div>
           </div>
-          <div className="song-description">
-            <p id="album-title" className="title">
-              Watashitachi wa Sou Yatte Ikite Iku Jinshu na no
-            </p>
-            <p id="album-artist" className="artist">
-              Masaru Yokoyama
-            </p>
+        ) : (
+          <div className="song-infos">
+            <div className="image-container">
+              <img
+                id="album-art"
+                src="https://d2y6mqrpjbqoe6.cloudfront.net/image/upload/f_auto,q_auto/media/library-400/216_636967437355378335Your_Lie_Small_hq.jpg"
+                alt=""
+              />
+            </div>
+            <div className="song-description">
+              <p id="album-title" className="title">
+                Watashitachi wa Sou Yatte Ikite Iku Jinshu na no
+              </p>
+              <p id="album-artist" className="artist">
+                Masaru Yokoyama
+              </p>
+            </div>
           </div>
-        </div>
+        )}
         <div className="icons">
           <i className="far fa-heart">
             <AiOutlineHeart />

@@ -1,9 +1,18 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { getSelectedSongAsync } from "../redux/actions";
 
 const BigCard = ({ card }) => {
+  const dispatch = useDispatch();
   return (
-    <Card style={{ height: "200px", width: "200px" }}>
+    <Card
+      style={{ height: "200px", width: "200px" }}
+      onClick={(e) => {
+        dispatch(getSelectedSongAsync(card));
+        console.log(card, "selected");
+      }}
+    >
       <Card.Img variant="top" src={card.album.cover_medium} />
       <Card.Body className="background">
         <Card.Title className="title">{card.album.title}</Card.Title>

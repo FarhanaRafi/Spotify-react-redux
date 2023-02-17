@@ -4,6 +4,7 @@ export const GET_ERROR = "GET_ERROR";
 export const GET_FAVORITES = "GET_FAVORITES";
 export const GET_PODCAST = "GET_PODCAST";
 export const GET_SEARCH = "GET_SEARCH";
+export const SET_SONG = "SET_SONG";
 
 export const getAlbumsAsync = (query) => {
   return async (dispatch, getState) => {
@@ -161,5 +162,12 @@ export const getSearchAsync = (query) => {
         payload: true,
       });
     }
+  };
+};
+
+export const getSelectedSongAsync = (song) => {
+  return {
+    type: SET_SONG,
+    payload: song,
   };
 };
