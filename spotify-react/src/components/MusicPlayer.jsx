@@ -7,7 +7,10 @@ const MusicPlayer = () => {
   let selectedFromRedux = useSelector((state) => state.selected.currentSong);
 
   return (
-    <div className="col-12 music-player w-100" style={{ width: "100%" }}>
+    <div
+      className="col-12 music-player w-100"
+      style={{ width: "100%", position: "fixed", bottom: 0 }}
+    >
       <div className="song-bar">
         {selectedFromRedux ? (
           <div className="song-infos">
@@ -48,7 +51,7 @@ const MusicPlayer = () => {
         )}
         <div className="icons">
           <i className="far fa-heart">
-            <AiOutlineHeart />
+            <AiOutlineHeart className="h5" />
           </i>
           <i className="fas fa-compress"></i>
         </div>
@@ -57,13 +60,13 @@ const MusicPlayer = () => {
         <div className="control-buttons mt-4">
           <i className="fas fa-random"></i>
           <i className="fas fa-step-backward">
-            <BiSkipPrevious />
+            <BiSkipPrevious className="h2" />
           </i>
           <i id="play-pause-btn" className="play-pause fas fa-play">
             <BsPlayFill />
           </i>
           <i className="fas fa-step-forward">
-            <BiSkipNext />
+            <BiSkipNext className="h2" />
           </i>
           <i className="fas fa-undo-alt"></i>
         </div>
@@ -80,7 +83,7 @@ const MusicPlayer = () => {
         <i className="fas fa-desktop"></i>
         <div className="volume-bar">
           <i className="fas fa-volume-down">
-            <BsFillVolumeDownFill />
+            <BsFillVolumeDownFill className="h2" />
           </i>
           <div className="progress-bar">
             <div className="progress"></div>

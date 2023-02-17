@@ -1,13 +1,3 @@
-// import React from "react";
-
-// const SearchResult = () => {
-
-//   return <div>
-
-//   </div>;
-// };
-
-// export default SearchResult;
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSearchAsync } from "../redux/actions";
@@ -34,11 +24,11 @@ const SearchResult = ({ query }) => {
         {loadingSpinner && (
           <Spinner animation="border" variant="success" className="spinners" />
         )}
-        <Row className="md:flex gap-2 flex-wrap">
+        <Row>
           {searchFromRedux.map((card) => {
             console.log(card, "gggggg");
             return (
-              <Col xs={3} key={card.id}>
+              <Col xs={2} key={card.id} className="mb-3">
                 <BigCard card={card} />
               </Col>
             );

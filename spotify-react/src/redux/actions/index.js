@@ -6,6 +6,10 @@ export const GET_PODCAST = "GET_PODCAST";
 export const GET_SEARCH = "GET_SEARCH";
 export const SET_SONG = "SET_SONG";
 export const SET_LIKED = "SET_LIKED";
+export const ADD_TO_FAVORITES = "ADD_TO_FAVORITES";
+export const REMOVE_FROM_FAVORITE = "REMOVE_FROM_FAVORITE";
+export const SET_SEARCH_ACTIVE = "SET_SEARCH_ACTIVE";
+export const GET_SEARCH_RESULT = "GET_SEARCH_RESULT";
 
 export const getAlbumsAsync = (query) => {
   return async (dispatch, getState) => {
@@ -177,5 +181,33 @@ export const getLikedSong = (id) => {
   return {
     type: SET_LIKED,
     payload: id,
+  };
+};
+
+export const addToFavoritesAction = (data) => {
+  return {
+    type: ADD_TO_FAVORITES,
+    payload: data,
+  };
+};
+
+export const removeFromFavoritesAction = (i) => {
+  return {
+    type: REMOVE_FROM_FAVORITE,
+    payload: i,
+  };
+};
+
+export const setSearchActiveAction = (value) => {
+  return {
+    type: SET_SEARCH_ACTIVE,
+    payload: value,
+  };
+};
+
+export const showSearchAction = (val) => {
+  return {
+    type: GET_SEARCH_RESULT,
+    payload: val,
   };
 };

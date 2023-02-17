@@ -67,7 +67,8 @@
 }
 
 .App{
-  background-color: rgb(89, 89, 92);
+  background-color: rgb(0, 0, 0);
+  margin-top: -50px;
 }
 
 .music-player {
@@ -281,4 +282,33 @@ i:hover {
 
 .playlist i {
   font-size: 14px;
+}
+
+
+.good-morning-content {
+  background-color: rgb(199, 133, 133);
+  width: 20%;
+}
+
+.good-morning-content:hover {
+  background-color: rgb(65, 64, 64);
+}
+
+.good-morning-singer {
+  margin-left: 5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.small-container:hover {
+  background-color: #2d5;
+}
+
+.goodmorning {
+  flex-grow: 1;
+  background: rgb(228, 62, 62);
+  background: linear-gradient(180deg, rgb(2, 101, 49) 0%, rgba(19, 19, 18, 0.2) 98%);
+}
+.cardHover:hover{
+  background-color: rgb(2, 101, 49);
 }

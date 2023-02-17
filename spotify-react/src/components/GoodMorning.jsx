@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAlbumsAsync } from "../redux/actions";
 import { Alert, Spinner, Row, Col } from "react-bootstrap";
-import Cards from "./Cards";
-// import { useDispatch } from "react-redux";
+import SmallCard from "./SmallCard";
 
 const GoodMorning = () => {
   const albumFromRedux = useSelector((state) => state.album.song);
@@ -19,22 +18,24 @@ const GoodMorning = () => {
   }, []);
 
   return (
-    <>
-      <h1 className="text-white text-start mb-4">Good Morning, Farhana</h1>
+    <div className="goodmorning">
+      <h3 className="text-white text-start mt-5 pt-5 ml-4">
+        Good Morning, Farhana
+      </h3>
       {error && <Alert variant="danger">Something went wrong</Alert>}
       {loadingSpinner && (
         <Spinner animation="border" variant="success" className="spinners" />
       )}
-      <Row className="md:flex gap-3 flex-wrap">
+      <Row className="md:flex gap-2 flex-wrap">
         {albumFromRedux.map((card) => {
           return (
-            <Col xs={6} key={card.id}>
-              <Cards card={card} />
+            <Col xs={6} md={4} lg={3} key={card.id}>
+              <SmallCard card={card} />
             </Col>
           );
         })}
       </Row>
-    </>
+    </div>
   );
 };
 

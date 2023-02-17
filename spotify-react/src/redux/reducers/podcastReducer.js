@@ -8,7 +8,6 @@ const initialState = {
 };
 
 const podcastReducer = (state = initialState, action) => {
-  console.log(action, "asdfghj");
   switch (action.type) {
     case GET_PODCAST:
       return {

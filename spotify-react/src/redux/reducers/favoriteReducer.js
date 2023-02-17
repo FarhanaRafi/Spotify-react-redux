@@ -7,7 +7,6 @@ const initialState = {
 };
 
 const favoriteReducer = (state = initialState, action) => {
-  console.log(action, "asdfghj");
   switch (action.type) {
     case GET_FAVORITES:
       return {

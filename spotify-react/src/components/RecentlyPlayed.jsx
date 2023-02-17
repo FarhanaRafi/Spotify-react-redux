@@ -19,18 +19,17 @@ const RecentlyPlayed = () => {
     <div>
       {" "}
       <>
-        <h1 className="text-white text-start mb-4 mt-4">
+        <h3 className="text-white text-start mb-4 mt-5 ml-4">
           Podcasts You Might enjoy
-        </h1>
+        </h3>
         {error && <Alert variant="danger">Something went wrong</Alert>}
         {loadingSpinner && (
           <Spinner animation="border" variant="success" className="spinners" />
         )}
-        <Row className="md:flex gap-2 flex-wrap">
+        <Row className="">
           {podcastFromRedux.map((card) => {
-            console.log(card, "gggggg");
             return (
-              <Col xs={3} key={card.id}>
+              <Col xs={6} md={2} key={card.id}>
                 <BigCard card={card} />
               </Col>
             );
