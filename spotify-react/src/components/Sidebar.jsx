@@ -14,6 +14,8 @@ import { Form } from "react-bootstrap";
 import GoodMorning from "./GoodMorning";
 import RecentlyPlayed from "./RecentlyPlayed";
 import Favorite from "./Favorite";
+import SearchResult from "./SearchResult";
+import { getSearchAsync } from "../redux/actions";
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -28,6 +30,9 @@ function classNames(...classes) {
 const Sidebar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchActive, setSearchActive] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [query, setQuery] = useState("");
+
   return (
     <div>
       <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -237,12 +242,23 @@ const Sidebar = () => {
           <div className="flex flex-1 justify-between px-4">
             <div className="flex flex-1">
               {searchActive ? (
-                <Form className="mt-5 px-5">
+                <Form
+                  className="mt-5 px-5"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    getSearchAsync(query);
+                    setVisible(false);
+                  }}
+                >
                   <Form.Group>
                     <Form.Control
                       className="pl-4 "
                       type="text"
                       placeholder="Search"
+                      value={query}
+                      onChange={(e) => {
+                        setQuery(e.target.value);
+                      }}
                     />
                   </Form.Group>
                 </Form>
@@ -331,14 +347,14 @@ const Sidebar = () => {
               </h1> */}
             </div>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-              {!searchActive ? (
+              {visible ? (
                 <>
                   <GoodMorning />
                   <RecentlyPlayed />
                   <Favorite />
                 </>
               ) : (
-                ""
+                <SearchResult query={query} />
               )}
 
               {/* <div className="py-4">
