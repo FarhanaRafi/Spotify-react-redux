@@ -8,6 +8,10 @@ In the project directory, you can run:
 
 ### `npm start`
 
-## Developed by Farhana Rafi
+### Developed by Farhana Rafi
 
-## Technologies used: Javascript, React.js, Redux, Bootstrap, React Router, Tailwind css
+### Technologies used: Javascript, React.js, Redux, Bootstrap, React Router, Tailwind css
+
+##screenshot
+
+![Screenshot](screenshot.png)
